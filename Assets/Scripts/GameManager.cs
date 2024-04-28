@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         {
             _time = 0;
 
-            GameObject zombie = Instantiate(_enemy, _player.transform.position + _player.transform.forward * 0.5f, Quaternion.identity);
+            GameObject zombie = Instantiate(_enemy, _player.transform.position + _player.transform.forward * 0.05f, Quaternion.identity);
             zombie.transform.LookAt(_player.transform.position);
             _sceneNav.SetAgentID(zombie.GetComponent<NavMeshAgent>());
         }

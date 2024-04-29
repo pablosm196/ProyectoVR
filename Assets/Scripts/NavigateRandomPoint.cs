@@ -16,6 +16,7 @@ public class NavigateRandomPoint : MonoBehaviour
     private float _timer;
 
     private NavMeshAgent _agent;
+    private MySceneNavigation _sceneNav;
     private MRUKRoom _room;
 
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class NavigateRandomPoint : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = _speed;
         _room = MRUK.Instance?.GetCurrentRoom();
+        _sceneNav = GameObject.Find("NavMesh").GetComponent<MySceneNavigation>();
     }
 
     // Update is called once per frame
@@ -33,25 +35,12 @@ public class NavigateRandomPoint : MonoBehaviour
         _timer += Time.deltaTime;
         if( _timer >= _timeChangeLocation)
         {
-            Vector3 newPos = RandomNavmeshLocation();
+            Vector3 newPos = _sceneNav.RandomNavmeshLocation(_radius);
             if(_room.IsPositionInRoom(newPos))
             {
                 _timer = 0;
                 _agent.SetDestination(newPos);
             }
         }
-    }
-
-    public Vector3 RandomNavmeshLocation()
-    {
-        Vector3 randomDirection = Random.insideUnitSphere * _radius;
-        randomDirection += transform.position;
-        NavMeshHit hit;
-        Vector3 finalPosition = Vector3.zero;
-        if (NavMesh.SamplePosition(randomDirection, out hit, _radius, 1))
-        {
-            finalPosition = hit.position;
-        }
-        return finalPosition;
     }
 }

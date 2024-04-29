@@ -1,6 +1,7 @@
 using Meta.XR.MRUtilityKit;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,10 +18,18 @@ public class GameManager : MonoBehaviour
     private float _spawnEnemyTime;
     private float _time;
 
+    private MRUKRoom _room;
+
     // Start is called before the first frame update
     void Start()
     {
         _time = 0;
+        _room = MRUK.Instance?.GetCurrentRoom();
+        if (!_room)
+        {
+            Debug.Log("Espabila");
+            Application.Quit();
+        }
     }
 
     // Update is called once per frame
@@ -29,11 +38,14 @@ public class GameManager : MonoBehaviour
         _time += Time.deltaTime;
         if( _time >= _spawnEnemyTime)
         {
-            _time = 0;
-
-            GameObject zombie = Instantiate(_enemy, _player.transform.position + _player.transform.forward * 0.05f, Quaternion.identity);
-            zombie.transform.LookAt(_player.transform.position);
-            _sceneNav.SetAgentID(zombie.GetComponent<NavMeshAgent>());
+            Vector3 pos = _sceneNav.RandomNavmeshLocation((Mathf.Max(_room.GetRoomBounds().size.x / 2, _room.GetRoomBounds().size.z / 2)));
+            if (_room.IsPositionInRoom(pos))
+            {
+                GameObject zombie = Instantiate(_enemy, _sceneNav.RandomNavmeshLocation((Mathf.Max(_room.GetRoomBounds().size.x / 2, _room.GetRoomBounds().size.z / 2))), Quaternion.identity);
+                zombie.transform.LookAt(_player.transform.position);
+                _sceneNav.SetAgentID(zombie.GetComponent<NavMeshAgent>());
+                _time = 0;
+            }
         }
     }
 }

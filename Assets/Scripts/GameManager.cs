@@ -24,12 +24,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _time = 0;
-        _room = MRUK.Instance?.GetCurrentRoom();
-        if (!_room)
-        {
-            Debug.Log("Espabila");
-            Application.Quit();
-        }
     }
 
     // Update is called once per frame
@@ -46,6 +40,16 @@ public class GameManager : MonoBehaviour
                 _sceneNav.SetAgentID(zombie.GetComponent<NavMeshAgent>());
                 _time = 0;
             }
+        }
+    }
+
+    public void SetRoom()
+    {
+        _room = MRUK.Instance?.GetCurrentRoom();
+        if (!_room)
+        {
+            Debug.Log("Espabila");
+            Application.Quit();
         }
     }
 }

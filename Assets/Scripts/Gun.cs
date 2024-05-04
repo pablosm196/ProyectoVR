@@ -23,7 +23,7 @@ public class Gun : MonoBehaviour
         if(_elapsedTime >= _timeToShoot && OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
         {
             _elapsedTime = 0;
-            GameObject bullet = Instantiate(_bullet, transform.position, _bullet.transform.rotation);
+            GameObject bullet = Instantiate(_bullet, transform.position + (transform.forward * 0.2f), _bullet.transform.rotation);
             Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
             bulletRB.velocity = _speed * transform.forward;
             bulletRB.useGravity = true;

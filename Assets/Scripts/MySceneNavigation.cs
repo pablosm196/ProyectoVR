@@ -87,7 +87,15 @@ namespace Meta.XR.MRUtilityKit
             _navMeshSurface.agentTypeID = navMeshBuildSettings.agentTypeID;
             _navMeshSurface.AddData();
 
+            //_navMeshSurface.BuildNavMesh();
+
             InitializeNavMesh(navMeshBuildSettings.agentTypeID);
+
+            //GameObject.Find("FLOOR").AddComponent<NavMeshSurface>();
+            //GameObject.Find("FLOOR").GetComponent<NavMeshSurface>().BuildNavMesh();
+
+            //_navMeshSurface.BuildNavMesh();
+            //OnNavMeshInitialized?.Invoke();
         }
 
         /// <summary>
@@ -154,6 +162,8 @@ namespace Meta.XR.MRUtilityKit
         public Bounds ResizeNavMeshFromRoomBounds(ref NavMeshSurface surface)
         {
             var mapBounds = MRUK.Instance.GetCurrentRoom().GetRoomBounds();
+            Debug.Log(MRUK.Instance.GetCurrentRoom());
+            Debug.Log(MRUK.Instance.GetCurrentRoom().GetRoomBounds());
             var mapCenter = new Vector3(mapBounds.center.x, mapBounds.min.y, mapBounds.center.z);
             surface.center = mapCenter;
 
@@ -176,8 +186,11 @@ namespace Meta.XR.MRUtilityKit
             }
             else
             {
+                Debug.LogError(_navMeshSurface.navMeshData.sourceBounds.extents.x);
+                Debug.LogError(_navMeshSurface.navMeshData.sourceBounds.extents.z);
                 Debug.LogWarning("Failed to generate a nav mesh, this may be because the room is too small" +
                     " or the AgentType settings are to strict");
+                Application.Quit();
             }
         }
 
@@ -201,8 +214,8 @@ namespace Meta.XR.MRUtilityKit
                 NavMeshBuilder.CollectSources(transform, _navMeshSurface.layerMask,
                     _navMeshSurface.useGeometry, 0, new List<NavMeshBuildMarkup>(), sources);
             }
-            var data = NavMeshBuilder.BuildNavMeshData(navMeshBuildSettings, sources, navMeshBounds,
-                transform.position, transform.rotation);
+            var data = NavMeshBuilder.BuildNavMeshData(navMeshBuildSettings, sources, navMeshBounds, transform.position, transform.rotation);
+            Debug.Log(data.sourceBounds);
             return data;
         }
 
@@ -236,13 +249,13 @@ namespace Meta.XR.MRUtilityKit
             agent.agentTypeID = _navMeshSurface.agentTypeID;
         }
 
-        public Vector3 RandomNavmeshLocation(float radius)
+        public Vector3 RandomNavmeshLocation(float radius, Vector3 pos = new Vector3())
         {
-            Vector3 randomDirection = Random.insideUnitSphere * radius;
-            randomDirection += transform.position;
+            Vector2 ran = Random.insideUnitCircle * radius;
+            Vector2 randomDirection = new Vector3(pos.x + ran.x, 0, pos.z + ran.y);
             NavMeshHit hit;
             Vector3 finalPosition = Vector3.zero;
-            if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
+            if (NavMesh.SamplePosition(randomDirection, out hit, radius, NavMesh.AllAreas))
             {
                 finalPosition = hit.position;
             }

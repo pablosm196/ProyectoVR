@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,19 +33,39 @@ public class GameManager : MonoBehaviour
         _time += Time.deltaTime;
         if( _time >= _spawnEnemyTime)
         {
-            Vector3 pos = _sceneNav.RandomNavmeshLocation((Mathf.Max(_room.GetRoomBounds().size.x / 2, _room.GetRoomBounds().size.z / 2)));
-            if (_room.IsPositionInRoom(pos))
+            if(SceneManager.GetActiveScene().name == "Mixta")
             {
-                GameObject zombie = Instantiate(_enemy, _sceneNav.RandomNavmeshLocation((Mathf.Max(_room.GetRoomBounds().size.x / 2, _room.GetRoomBounds().size.z / 2))), Quaternion.identity);
-                zombie.transform.LookAt(_player.transform.position);
-                _sceneNav.SetAgentID(zombie.GetComponent<NavMeshAgent>());
-                _time = 0;
+                if(_room == null)
+                {
+                    Debug.Log("No hay habitación");                
+                    return;
+                }
+                Vector3 pos = _sceneNav.RandomNavmeshLocation(Mathf.Max(_room.GetRoomBounds().size.x, _room.GetRoomBounds().size.z), _player.transform.position);
+                if (_room.IsPositionInRoom(pos))
+                {
+                    GameObject zombie = Instantiate(_enemy, pos, Quaternion.identity);
+                    zombie.transform.LookAt(_player.transform.position);
+                    _sceneNav.SetAgentID(zombie.GetComponent<NavMeshAgent>());
+                    _time = 0;
+                }
+            }
+            else
+            {
+                Vector3 pos = _sceneNav.RandomNavmeshLocation(10000, _player.transform.position);
+                if(pos != Vector3.zero)
+                {
+                    GameObject zombie = Instantiate(_enemy, pos, Quaternion.identity);
+                    zombie.transform.LookAt(_player.transform.position);
+                    _sceneNav.SetAgentID(zombie.GetComponent<NavMeshAgent>());
+                    _time = 0;
+                }
             }
         }
     }
 
     public void SetRoom()
     {
+        Debug.Log("Entra");
         _room = MRUK.Instance?.GetCurrentRoom();
         if (!_room)
         {

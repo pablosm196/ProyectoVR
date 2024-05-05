@@ -6220,7 +6220,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.5
+  m_Height: 1.7
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -10748,7 +10748,7 @@ MonoBehaviour:
   _enemy: {fileID: 5559631454594583195, guid: 794fa75c5657b5e4da980dccd2c588d9, type: 3}
   _player: {fileID: 567719331}
   _sceneNav: {fileID: 1935845918}
-  _spawnEnemyTime: 2
+  _spawnEnemyTime: 5
   _spawnPoints:
   - {fileID: 1060626765}
   - {fileID: 552393270}

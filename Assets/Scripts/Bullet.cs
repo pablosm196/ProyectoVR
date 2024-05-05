@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    [SerializeField]
+    private float _timeToLive;
+    private float _timer;
+
+    private void Update()
     {
-        Destroy(gameObject);
+        _timer += Time.deltaTime;
+        if (_timer > _timeToLive)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: e0f97933cc504dd449c4532659ddfcb6
+  - enabled: 1
+    path: Assets/Scenes/Aldea_.unity
+    guid: d82967936bf3623429a13ffebc5c3a52
+  - enabled: 1
     path: Assets/Scenes/Mixta.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:

@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
 
     private MRUKRoom _room;
 
+    [SerializeField]
+    private List<Transform> _spawnPoints;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,14 +54,11 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Vector3 pos = _sceneNav.RandomNavmeshLocation(10000, _player.transform.position);
-                if(pos != Vector3.zero)
-                {
-                    GameObject zombie = Instantiate(_enemy, pos, Quaternion.identity);
+                    Transform transform = _spawnPoints[Random.Range(0, _spawnPoints.Count)];
+                    GameObject zombie = Instantiate(_enemy, transform.position, Quaternion.identity);
                     zombie.transform.LookAt(_player.transform.position);
                     _sceneNav.SetAgentID(zombie.GetComponent<NavMeshAgent>());
                     _time = 0;
-                }
             }
         }
     }

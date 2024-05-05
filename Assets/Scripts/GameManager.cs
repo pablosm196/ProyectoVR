@@ -65,6 +65,10 @@ public class GameManager : MonoBehaviour
 
     public void SetRoom()
     {
+        string s = "";
+        for(int i = 0; i < _sceneNav.transform.childCount; i++)
+            s += _sceneNav.transform.GetChild(i).name + "\n";
+        Debug.Log(s);
         Debug.Log("Entra");
         _room = MRUK.Instance?.GetCurrentRoom();
         if (!_room)

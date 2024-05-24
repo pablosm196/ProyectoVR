@@ -100,6 +100,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a30c35f052fc1146b4a5814a51eb125, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3487513667678907628}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a30c35f052fc1146b4a5814a51eb125, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4487473151547860014}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a30c35f052fc1146b4a5814a51eb125, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1766968909406371525}
   m_SourcePrefab: {fileID: 100100000, guid: 7a30c35f052fc1146b4a5814a51eb125, type: 3}
 --- !u!1 &5559631454594583195 stripped
 GameObject:
@@ -309,7 +315,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5559631454594583195}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b89323b94c26a6d4a93fea3f4997d59d, type: 3}
   m_Name: 
@@ -347,3 +353,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1377c00d4f5c31c479f1acc95959f195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4487473151547860014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5559631454594583195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3af93d82bce84645931daf078324175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _definition: {fileID: 11400000, guid: 99a7101f4c256ff49889abb7ca309858, type: 2}
+--- !u!114 &1766968909406371525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5559631454594583195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15025d636b0519d4b97c86403305adb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seconds: 1
+  _defs:
+  - {fileID: 11400000, guid: 99a7101f4c256ff49889abb7ca309858, type: 2}

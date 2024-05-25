@@ -1,3 +1,4 @@
+using Oculus.Interaction.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,30 @@ public class Gun : MonoBehaviour
     private float _speed;
     [SerializeField]
     LevelManager _levelManager;
+    [SerializeField]
+    private float _rangeSound;
 
     private AudioSource _audioSource;
+
+    private void Shoot()
+    {
+        _audioSource.Play();
+        _elapsedTime = 0;
+        GameObject bullet = Instantiate(_bullet, transform.position + (transform.forward * 0.2f), _bullet.transform.rotation);
+        Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
+        bulletRB.velocity = _speed * transform.forward;
+        bulletRB.useGravity = true;
+
+        Collider[] objs = Physics.OverlapSphere(transform.position, _rangeSound);
+
+        foreach (Collider obj in objs)
+        {
+            if(obj.GetComponent<EnemyBlackboard>() != null)
+            {
+                obj.GetComponent<EnemyBlackboard>().StartListening(transform.position);
+            }
+        }
+    }
 
     private void Start()
     {
@@ -27,12 +50,7 @@ public class Gun : MonoBehaviour
         _elapsedTime += Time.deltaTime;
         if(_elapsedTime >= _timeToShoot && OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
         {
-            _audioSource.Play();
-            _elapsedTime = 0;
-            GameObject bullet = Instantiate(_bullet, transform.position + (transform.forward * 0.2f), _bullet.transform.rotation);
-            Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
-            bulletRB.velocity = _speed * transform.forward;
-            bulletRB.useGravity = true;
+            Shoot();
         }
 
         if (OVRInput.GetDown(OVRInput.Button.Start))

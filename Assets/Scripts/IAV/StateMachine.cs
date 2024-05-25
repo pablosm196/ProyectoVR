@@ -38,9 +38,12 @@ public class StateMachine : MonoBehaviour
 
         for(int i = 0; i < _definition.origin.Length; i++)
         {
-            _transitions[_states[_definition.origin[i]]].Add(StateMachineFactory.Instance.GetTransition(_definition.transitions[i]));
-            _transitions[_states[_definition.origin[i]]][i]._origin = _states[_definition.origin[i]];
-            _transitions[_states[_definition.origin[i]]][i]._dest = _states[_definition.destination[i]];
+            Transition transition = StateMachineFactory.Instance.GetTransition(_definition.transitions[i]);
+            _transitions[_states[_definition.origin[i]]].Add(transition);
+            transition._origin = _states[_definition.origin[i]];
+            transition._dest = _states[_definition.destination[i]];
+            transition.Init(gameObject, this, GetComponent<EnemyBlackboard>());
+
         }
         _current = _states[_definition.states[0]];
         _current.Enter();

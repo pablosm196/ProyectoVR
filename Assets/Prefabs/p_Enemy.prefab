@@ -378,6 +378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15025d636b0519d4b97c86403305adb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seconds: 1
+  _seconds: 2
   _defs:
   - {fileID: 11400000, guid: 99a7101f4c256ff49889abb7ca309858, type: 2}

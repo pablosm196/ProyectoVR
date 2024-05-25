@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.19548157, g: 0.2331554, b: 0.26770696, a: 1}
+  m_IndirectSpecularColor: {r: 0.19552715, g: 0.23316203, b: 0.2677633, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1077,6 +1077,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 567719334}
+    - targetCorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 567719339}
     - targetCorrespondingSourceObject: {fileID: 113768, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 170366133}
@@ -1135,6 +1138,7 @@ MonoBehaviour:
   _timeToShoot: 0.5
   _speed: 10
   _levelManager: {fileID: 1436439559}
+  _rangeSound: 10
 --- !u!82 &170366134
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6256,6 +6260,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
   m_PrefabInstance: {fileID: 170366125}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &567719339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567719331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31cfbbc188ff2fe4780c4784160ab33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeToSmell: 3
+  _minIntensity: 5
+  _maxDistance: 10
+  _point: {fileID: 7769784052909479144, guid: 531e16f2565c2a34488fb240cd18021d, type: 3}
 --- !u!4 &616871446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1593955891832808549, guid: 89abb1b3271a2cf43b8ad02715714539, type: 3}

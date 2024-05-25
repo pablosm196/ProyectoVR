@@ -11,4 +11,8 @@ public class StateMachineDefinition : ScriptableObject
     public string[] origin;
     public string[] destination;
     public string[] transitions;
+
+    [Space(10)]
+    [Header("Para las SubStateMachine")]
+    public bool cycle;
 }

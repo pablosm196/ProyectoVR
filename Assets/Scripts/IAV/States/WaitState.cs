@@ -19,9 +19,5 @@ public class WaitState : State
     public override void Update()
     {
         elapsedTime += Time.deltaTime;
-        if(elapsedTime >= _seconds)
-        {
-            Debug.Log("Lol");
-        }
     }
 }

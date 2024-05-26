@@ -13,11 +13,14 @@ public class EnemyBlackboard : MonoBehaviour
     public float Distance { get { return _distance; } }
 
     public StateMachineDefinition[] _defs;
-    private bool _listening;
-    private bool _smelling;
-    private bool _attacking;
+
+    public enum State { WANDER, LISTENING, SMELLING, ATTACKING };
+    private State _actualState;
+    public State ActualState { get { return _actualState; } }
+
     private Vector3 _objetive;
     public Vector3 Objetive {  get { return _objetive; } }
+
     private SmellPoint _smellPoint;
     private GameObject _player;
 
@@ -30,24 +33,31 @@ public class EnemyBlackboard : MonoBehaviour
 
     public void StartListening(Vector3 pos)
     {
-        _listening = true;
-        _smelling = _attacking = false;
+        if (_actualState == State.ATTACKING && _actualState == State.SMELLING)
+            return;
+        _actualState = State.LISTENING;
         _objetive = pos;
     }
 
     public void StartSmelling(SmellPoint point)
     {
-        _smelling = true;
-        _listening = _attacking = false;
+        if (_actualState == State.ATTACKING)
+            return;
+        _actualState = State.SMELLING;
         UpdateSmell(point);
         _objetive = _smellPoint.transform.position;
     }
 
     public void StartAttacking()
     {
-        _attacking = true;
-        _listening = _smelling = false;
+        _actualState = State.ATTACKING;
         _objetive = _player.transform.position;
+    }
+
+    public void StartWander()
+    {
+        _actualState = State.WANDER;
+        _objetive = Vector3.zero;
     }
 
     public void SetObjetive(Vector3 pos)
@@ -69,7 +79,7 @@ public class EnemyBlackboard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _listening = _smelling = _attacking = false;
+        _actualState = State.WANDER;
         _objetive = Vector3.zero;
         _player = GameObject.Find("Player");
     }
@@ -77,6 +87,9 @@ public class EnemyBlackboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(_actualState == State.SMELLING && _smellPoint == null)
+        {
+            StartWander();
+        }
     }
 }

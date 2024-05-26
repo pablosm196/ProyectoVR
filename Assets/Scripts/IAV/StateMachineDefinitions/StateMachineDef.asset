@@ -42,4 +42,14 @@ MonoBehaviour:
   - Wander
   - Attack
   - Attack
-  transitions: []
+  transitions:
+  - ToListen
+  - ExitSubMachine
+  - ToSmell
+  - ToWander
+  - ToSmell
+  - ToAttack
+  - ToWander
+  - ToAttack
+  - ToAttack
+  cycle: 0

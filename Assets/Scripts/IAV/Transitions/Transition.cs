@@ -6,7 +6,7 @@ public class Transition
 {
     protected GameObject _gameObject;
     protected StateMachine _machine;
-    protected EnemyBlackboard _enemyBlackboard;
+    protected EnemyBlackboard _blackboard;
 
     public State _origin;
     public State _dest;
@@ -17,7 +17,7 @@ public class Transition
     {
         _gameObject = g;
         _machine = machine;
-        _enemyBlackboard = blackboard;
+        _blackboard = blackboard;
     }
     public virtual bool Check() { return true; }
 }

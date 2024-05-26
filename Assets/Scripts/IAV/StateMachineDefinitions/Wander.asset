@@ -17,6 +17,14 @@ MonoBehaviour:
   - Move
   names:
   - Wait
-  origin: []
-  destination: []
-  transitions: []
+  - Move
+  origin:
+  - Wait
+  - Move
+  destination:
+  - Move
+  - Wait
+  transitions:
+  - ExitWait
+  - ExitMove
+  cycle: 1

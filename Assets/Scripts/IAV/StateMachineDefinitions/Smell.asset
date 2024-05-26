@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc74d6f7659d6348b2040671f5e172e, type: 3}
   m_Name: Smell
   m_EditorClassIdentifier: 
-  states: []
-  names: []
-  origin: []
-  destination: []
-  transitions: []
+  states:
+  - Move
+  names:
+  - Move
+  origin:
+  - Move
+  destination:
+  - Move
+  transitions:
+  - ExitMove
+  cycle: 1

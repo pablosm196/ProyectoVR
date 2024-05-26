@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxIntensity: 10
   _minIntensity: 2
+  _speed: 2
 --- !u!135 &-1032378372564833417
 SphereCollider:
   m_ObjectHideFlags: 0

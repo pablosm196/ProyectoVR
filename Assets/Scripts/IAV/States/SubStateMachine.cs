@@ -87,6 +87,6 @@ public class SubStateMachine : State
 
     public override void Exit()
     {
-        base.Exit();
+        _blackboard.StartWander();
     }
 }

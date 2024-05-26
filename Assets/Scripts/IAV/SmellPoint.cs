@@ -22,7 +22,7 @@ public class SmellPoint : MonoBehaviour
     {
         if(other.GetComponent<EnemyBlackboard>() != null)
         {
-            other.GetComponent<EnemyBlackboard>().UpdateSmell(this);
+            other.GetComponent<EnemyBlackboard>().StartSmelling(this);
         }
     }
 

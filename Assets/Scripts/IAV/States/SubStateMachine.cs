@@ -60,7 +60,7 @@ public class SubStateMachine : State
             transition.Init(_gameObject, _machine, _gameObject.GetComponent<EnemyBlackboard>());
 
         }
-        _current = _states[_definition.states[0]];
+        _current = _states[_definition.names[0]];
         _current.Enter();
     }
 
@@ -87,6 +87,6 @@ public class SubStateMachine : State
 
     public override void Exit()
     {
-        _blackboard.StartWander();
+        _current.Exit();        
     }
 }

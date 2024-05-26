@@ -13,16 +13,12 @@ public class MoveToPoint : State
     public override void Enter()
     {
         _agent = _gameObject.GetComponent<NavMeshAgent>();
+        _agent.isStopped = false;
     }
 
     // Update is called once per frame
     public override void Update()
     {
         _agent.SetDestination(_blackboard.Objetive);
-    }
-
-    public override void Exit()
-    {
-        _blackboard.SetObjetive(Vector3.zero);
     }
 }

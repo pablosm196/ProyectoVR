@@ -7,6 +7,6 @@ public class ExitMove : Transition
 {
     public override bool Check()
     {
-        return Vector3.Distance(_gameObject.transform.position, _blackboard.Objetive) <= 0.5;
+        return Vector3.Distance(_gameObject.transform.position, _blackboard.Objetive) <= 0.1;
     }
 }

@@ -8,8 +8,6 @@ public class Smell : MonoBehaviour
     private float _timeToSmell;
     private float _time;
     [SerializeField]
-    private float _minIntensity;
-    [SerializeField]
     private float _maxDistance;
     [SerializeField]
     private GameObject _point;
@@ -29,7 +27,7 @@ public class Smell : MonoBehaviour
         if(_time >= _timeToSmell)
         {
             _time = 0;
-            if(_lastPoint == null || _lastPoint.GetComponent<SmellPoint>().Intensity < _minIntensity || Vector3.Distance(transform.position, _lastPoint.transform.position) > _maxDistance)
+            if(_lastPoint == null || Vector3.Distance(transform.position, _lastPoint.transform.position) > _maxDistance)
             {
                 _lastPoint = Instantiate(_point, transform.position, Quaternion.identity);
             }

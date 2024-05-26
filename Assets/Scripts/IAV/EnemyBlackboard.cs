@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EnemyBlackboard : MonoBehaviour
 {
@@ -33,7 +30,7 @@ public class EnemyBlackboard : MonoBehaviour
 
     public void StartListening(Vector3 pos)
     {
-        if (_actualState == State.ATTACKING && _actualState == State.SMELLING)
+        if (_actualState == State.ATTACKING)
             return;
         _actualState = State.LISTENING;
         _objetive = pos;

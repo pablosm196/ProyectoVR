@@ -45,7 +45,7 @@ public class StateMachine : MonoBehaviour
             transition.Init(gameObject, this, GetComponent<EnemyBlackboard>());
 
         }
-        _current = _states[_definition.states[0]];
+        _current = _states[_definition.names[0]];
         _current.Enter();
     }
 

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   states:
-  - Move
+  - Follow
   names:
-  - Move
+  - Follow
   origin:
-  - Move
+  - Follow
   destination:
-  - Move
+  - Follow
   transitions:
   - ExitMove
   cycle: 1

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Smell
   m_EditorClassIdentifier: 
   states:
-  - Move
+  - MovePoint
   names:
-  - Move
+  - MovePoint
   origin:
-  - Move
+  - MovePoint
   destination:
-  - Move
+  - MovePoint
   transitions:
   - ExitMove
-  cycle: 1
+  cycle: 0

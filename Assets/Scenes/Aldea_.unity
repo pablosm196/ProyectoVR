@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.19552715, g: 0.23316203, b: 0.2677633, a: 1}
+  m_IndirectSpecularColor: {r: 0.19548157, g: 0.2331554, b: 0.26770696, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -242,6 +242,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 460334, guid: fac85779e5fda1c4493c6d5276271dde, type: 3}
   m_PrefabInstance: {fileID: 24355321}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &26898141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 26898142}
+  m_Layer: 0
+  m_Name: sp_0 (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &26898142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26898141}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.453, y: -1.567, z: 21.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 343417688}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &47210107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1138,7 +1169,7 @@ MonoBehaviour:
   _timeToShoot: 0.5
   _speed: 10
   _levelManager: {fileID: 1436439559}
-  _rangeSound: 10
+  _rangeSound: 20
 --- !u!82 &170366134
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1719,6 +1750,7 @@ Transform:
   - {fileID: 1742362318}
   - {fileID: 165414412}
   - {fileID: 869569137}
+  - {fileID: 26898142}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &346094819 stripped
@@ -6272,9 +6304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cfbbc188ff2fe4780c4784160ab33b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToSmell: 3
-  _minIntensity: 5
-  _maxDistance: 10
+  _timeToSmell: 1
+  _maxDistance: 0.5
   _point: {fileID: 7769784052909479144, guid: 531e16f2565c2a34488fb240cd18021d, type: 3}
 --- !u!4 &616871446 stripped
 Transform:
@@ -10779,6 +10810,7 @@ MonoBehaviour:
   - {fileID: 1742362318}
   - {fileID: 165414412}
   - {fileID: 869569137}
+  - {fileID: 26898142}
 --- !u!4 &1436439558
 Transform:
   m_ObjectHideFlags: 0

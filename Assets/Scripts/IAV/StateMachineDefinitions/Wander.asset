@@ -14,17 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   states:
   - Wait
-  - Move
+  - Choose
+  - MovePoint
   names:
   - Wait
-  - Move
+  - Choose
+  - MovePoint
   origin:
   - Wait
-  - Move
+  - Choose
+  - MovePoint
   destination:
-  - Move
+  - Choose
+  - MovePoint
   - Wait
   transitions:
   - ExitWait
+  - ExitChoose
   - ExitMove
   cycle: 1

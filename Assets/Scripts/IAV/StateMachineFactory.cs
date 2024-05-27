@@ -52,15 +52,4 @@ public class StateMachineFactory : MonoBehaviour
         Transition instance = (Transition)ctor.Invoke(new System.Type[0]);
         return instance;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

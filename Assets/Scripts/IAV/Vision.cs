@@ -26,7 +26,6 @@ public class Vision : MonoBehaviour
     private LayerMask _layerMask;
     private void FixedUpdate()
     {
-        RaycastHit hit;
         Vector3 pos = new Vector3(transform.position.x, _visionPoint.position.y, transform.position.z);
         Collider[] obj = Physics.OverlapBox(pos + transform.forward * _maxDistance / 2, new Vector3(_width / 2, _height / 2, _maxDistance / 2), Quaternion.identity, _layerMask);
         if (obj.Length > 0 )
